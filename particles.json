@@ -1,23 +1,23 @@
 {
   "particles": {
     "number": {
-      "value": 29,
+      "value": 19,
       "density": {
-        "enable": true,
-        "value_area": 801.7060304327614
+        "enable": false,
+        "value_area": 721.5354273894853
       }
     },
     "color": {
-      "value": "#7f95dc"
+      "value": "#6671bb"
     },
     "shape": {
       "type": "circle",
       "stroke": {
-        "width": 20,
-        "color": "#7f95dc"
+        "width": 0,
+        "color": "#000"
       },
       "polygon": {
-        "nb_sides": 3
+        "nb_sides": 6
       },
       "image": {
         "src": "img/github.svg",
@@ -26,35 +26,35 @@
       }
     },
     "opacity": {
-      "value": 0.10422178395625899,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 0.8932849335314796,
-        "opacity_min": 0.1,
-        "sync": true
-      }
-    },
-    "size": {
-      "value": 10,
+      "value": 0.3,
       "random": true,
       "anim": {
         "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 36.076771369474265,
+      "random": false,
+      "anim": {
+        "enable": true,
+        "speed": 12.181158184520175,
+        "size_min": 55.22125043649147,
         "sync": false
       }
     },
     "line_linked": {
-      "enable": true,
-      "distance": 32.06824121731046,
+      "enable": false,
+      "distance": 200,
       "color": "#ffffff",
-      "opacity": 0.30464829156444934,
-      "width": 1
+      "opacity": 1,
+      "width": 2
     },
     "move": {
       "enable": true,
-      "speed": 6,
+      "speed": 8,
       "direction": "none",
       "random": false,
       "straight": false,
@@ -72,10 +72,10 @@
     "events": {
       "onhover": {
         "enable": false,
-        "mode": "repulse"
+        "mode": "grab"
       },
       "onclick": {
-        "enable": true,
+        "enable": false,
         "mode": "push"
       },
       "resize": true
@@ -106,5 +106,5 @@
       }
     }
   },
-  "retina_detect": false
+  "retina_detect": true
 }
