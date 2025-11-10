@@ -1,13 +1,20 @@
 html {
   font-size: 62.5%;
+  height: 100%;
+  /* Ajuste para garantir 100% da viewport */
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
+  /* Remove margem padrão */
+  padding: 0;
+  /* Adicionado: Remove possível padding padrão */
   background: linear-gradient(135deg, #f5f8ff, #e1ecff);
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
+  /* Ajustado para 100% */
+  overflow-y: auto;
+  /* Permite rolagem vertical apenas se o conteúdo transbordar */
 }
 
 /* Cabeçalho */
@@ -51,8 +58,11 @@ body {
 .main-container {
   display: flex;
   height: calc(100vh - 6rem);
-  justify-content: center;
   align-items: center;
+  background-image: url('../assets/background-img1.png');
+  background-repeat: no-repeat;
+  background-size: 50% 100%;
+  background-position: right;
 }
 
 /* Lado esquerdo */
@@ -60,13 +70,15 @@ body {
   text-align: center;
 }
 
-.blue-box{
+.blue-box {
   background-color: rgb(66, 141, 211);
   width: 15px;
   height: 70px;
   box-shadow: 0 4px 10px rgba(0, 225, 255, 0.3);
   border-radius: 5px;
+  margin-left: 10em;
 }
+
 /* Efeito de digitação */
 .title {
   font-size: 8rem;
@@ -74,7 +86,7 @@ body {
   color: #0d1c3d;
   position: relative;
   display: inline-block;
-  padding-left: 0.4em;
+  padding-left: 0.2em;
   border-right: 7px solid black;
   white-space: nowrap;
   overflow: hidden;
@@ -94,8 +106,6 @@ body {
   to {
     width: 9ch;
   }
-
-  /* CemiBook = 8 caracteres */
 }
 
 /* Cursor piscando */
