@@ -1,4 +1,5 @@
-    const loginForm = document.getElementById('loginForm');
+//Pega os elemnetos pelo ID no HTML
+const loginForm = document.getElementById('loginForm');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const emailError = document.getElementById('emailError');
@@ -18,28 +19,29 @@
       //Validação de email
       const emailValue = emailInput.value.trim();
       if (emailValue === "") {
-        emailError.textContent = "Por favor, insira seu email.";
+        emailError.textContent = "Por favor, insira seu email.";//Pedir o email
         valid = false;
       } else if (!/^\S+@\S+\.\S+$/.test(emailValue)) {
-        emailError.textContent = "Digite um email válido.";
+        emailError.textContent = "Digite um email válido.";//Se o email nao for valido
         valid = false;
       }
 
       const passwordValue = passwordInput.value.trim();
       if (passwordValue === "") {
-        passwordError.textContent = "Por favor, insira sua senha.";
+        passwordError.textContent = "Por favor, insira sua senha.";//Digitar a senha
         valid = false;
       } else if (passwordValue.length < 6) {
-        passwordError.textContent = "A senha deve ter pelo menos 6 caracteres.";
+        passwordError.textContent = "A senha deve ter pelo menos 6 caracteres.";//Sneha com 6 caracteres
         valid = false;
       }
 
-      // Se for válido
+      //Se for válido
       if (valid) {
         successMessage.style.display = "block";
-        // Simula redirecionamento após 2s
+        //Simula redirecionamento após 2s
         setTimeout(() => {
           window.location.href = "../principal.html";
         }, 2000);
       }
     });
+
