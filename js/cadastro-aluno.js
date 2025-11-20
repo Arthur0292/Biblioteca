@@ -1,8 +1,10 @@
+//Pega o elemento pelo ID
 const form = document.getElementById("formAluno");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  //Adiciona constantes e tire os espaços
   const nome = document.getElementById("nome").value.trim();
   const matricula = document.getElementById("matricula").value.trim();
   const turma = document.getElementById("turma").value.trim();
@@ -14,38 +16,38 @@ form.addEventListener("submit", function (event) {
   // Sanitiza CPF (remove pontos/traços/espaços)
   const cpf = cpfRaw.replace(/\D/g, "");
 
-  // Verifica campos obrigatórios
+  // Verifica campos obrigatórios foram preenchidos
   if (!nome || !matricula || !turma || !email || !telefone || !cpf || !endereco) {
     alert("⚠ Preencha todos os campos!");
     return;
   }
 
-  // Validação simples de e-mail
+  //Validação simples de e-mail
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
     alert("⚠ Digite um e-mail válido!");
     return;
   }
 
-  // Validação básica do CPF
+  //Validação básica do CPF
   if (cpf.length !== 11) {
     alert("⚠ CPF deve ter 11 números (sem pontos ou traços)!");
     return;
   }
 
-  // Rejeita CPFs com todos os dígitos iguais
+  //Rejeita CPFs com todos os dígitos iguais
   if (/^(\d)\1{10}$/.test(cpf)) {
     alert("⚠ CPF inválido!");
     return;
   }
 
-  // Validação matemática do CPF
+  //Validação matemática do CPF
   if (!validarCPF(cpf)) {
     alert("⚠ CPF inválido!");
     return;
   }
 
-  // Se passou em tudo → salva no localStorage
+  //Se passou em tudo → salva no localStorage
   const aluno = { nome, matricula, turma, email, telefone, cpf, endereco };
   let alunos = JSON.parse(localStorage.getItem("alunos")) || [];
   alunos.push(aluno);
@@ -55,7 +57,7 @@ form.addEventListener("submit", function (event) {
   form.reset();
 });
 
-// Função de validação dos dígitos do CPF
+//Função de validação dos dígitos do CPF
 function validarCPF(cpf) {
   if (cpf.length !== 11) return false;
 
@@ -74,6 +76,7 @@ function validarCPF(cpf) {
   resto = (soma * 10) % 11;
   if (resto === 10) resto = 0;
   if (resto !== Number(cpf[10])) return false;
-
+//Se tudo estiver correto retorna true
   return true;
 }
+
