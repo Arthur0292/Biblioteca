@@ -34,8 +34,20 @@ loginForm.addEventListener('submit', function (event) {
   if (valid) {
     const email = emailInput.value.trim();
     const senha = passwordInput.value.trim();
-//email e senha criptografado
-  eval(function(m,c,h){function z(i){return(i< 62?'':z(parseInt(i/62)))+((i=i%62)>35?String.fromCharCode(i+29):i.toString(36))}for(var i=0;i< m.length;i++)h[z(i)]=m[i];function d(w){return h[w]?h[w]:w;};return c.replace(/\b\w+\b/g,d);}('if|email|admin|cemi|com|senha|12345678|window|location|href|principal|html|else|passwordError|textContent|Email|ou|incorretos'.split('|'),'0(1==="2@3.4"&&5==="6"){7.8.9="./a.b";}c {d.e="f g 5 h.";}}',{}))
+  // Se tudo estiver válido, checa credenciais fixas
+  if (valid) {
+    const email = emailInput.value.trim();
+    const senha = passwordInput.value.trim();
 
+      //Se email e senha estiver corretos:
+    if (email === "admin@cemi.com" && senha === "12345678") {
+      // Redirecionar para a página principal
+      window.location.href = "./principal.html";
+        //FeedBack email e senha incorretos
+    } else {
+      passwordError.textContent = "Email ou senha incorretos.";
+    }
+  }
 });
+
 
