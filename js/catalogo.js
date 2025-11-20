@@ -1,12 +1,12 @@
-// Gerencia livros e reservas no Local Storage.
+//Gerencia livros e reservas no Local Storage.
 
-// Chaves para salvar os dados
+//Chaves para salvar os dados
 const CHAVES = {
     LIVROS: "livros",
     ALUNOS: "alunos"
 };
 
-// Elementos da tela
+//Elementos da tela
 const EL = {
     search: document.getElementById("search"),
     listaLivros: document.getElementById("bookList"),
@@ -15,26 +15,24 @@ const EL = {
     listaAlunos: document.getElementById("studentListContainer"),
 };
 
-let livroEditando = null;   // Índice do livro a ser editado
-let livroReservando = null; // Índice do livro a ser reservado
+let livroEditando = null;   //Índice do livro a ser editado
+let livroReservando = null; //Índice do livro a ser reservado
 
-// Pega dados (de texto para objeto)
+//Pega dados (de texto para objeto)
 const pegarDados = (key) => JSON.parse(localStorage.getItem(key)) ?? [];
-// Salva dados (de objeto para texto)
+//Salva dados (de objeto para texto)
 const salvarDados = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
-// Pega a data de hoje formatada
+//Pega a data e formata
 const dataHoje = () => {
     const d = new Date();
     d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
     return d.toISOString().split('T')[0];
 };
 
-// --- Funções Principais ---
-
-// Mostra os livros na tela
+//Mostra os livros na tela
 function carregarLivros() {
-    EL.listaLivros.innerHTML = ""; // Limpa a lista
+    EL.listaLivros.innerHTML = ""; //Limpa a lista
     const livros = pegarDados(CHAVES.LIVROS);
 
     livros.forEach((livro, index) => {
@@ -43,7 +41,7 @@ function carregarLivros() {
         
         let infoReserva = '';
         
-        // Checa e formata se o livro estiver reservado
+        //Checa e formata se o livro estiver reservado
         if (livro.reservadoPor) {
             infoReserva = `<p class="reserved-status">Reservado para: <strong>${livro.reservadoPor}</strong>`;
             if (livro.dataDevolucao) {
@@ -54,7 +52,7 @@ function carregarLivros() {
             }
         }
         
-        // Cria o cartão do livro (HTML)
+        //Cria o cartão do livro (HTML) e os botões de ediçao e excluir
         card.innerHTML = `
             <span class="action-btn remove-btn" data-action="remove" data-index="${index}">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
@@ -72,29 +70,29 @@ function carregarLivros() {
     });
 }
 
-// Remove o livro
+//Remove o livro
 const removerLivro = (index) => {
-    if (confirm("Excluir livro?")) { // Pergunta antes
+    if (confirm("Excluir livro?")) { //Pergunta antes se vai remover
         const livros = pegarDados(CHAVES.LIVROS);
-        livros.splice(index, 1); // Remove
+        livros.splice(index, 1); //Remove o livro
         salvarDados(CHAVES.LIVROS, livros);
         carregarLivros();
     }
 };
 
-// Abre a edição
+//Abre a edição
 const abrirEdicao = (index) => {
     livroEditando = index;
     const livro = pegarDados(CHAVES.LIVROS)[index];
     
-    // Preenche o formulário
+    //Preenche o formulário
     document.getElementById("editNome").value = livro.nome;
     document.getElementById("editAutor").value = livro.autor;
     document.getElementById("editSumario").value = livro.sumario;
     document.getElementById("editLocalizacao").value = livro.localizacao;
     document.getElementById("editImagem").value = livro.imagem;
 
-    EL.modalEditar.style.display = "flex"; // Mostra o modal
+    EL.modalEditar.style.display = "flex"; //Mostra o modal(janelinha)
 };
 
 // Salva a edição
@@ -103,7 +101,7 @@ const salvarEdicao = () => {
     
     const livros = pegarDados(CHAVES.LIVROS);
     
-    // Atualiza com os dados do formulário
+    //Atualiza com os dados do formulário do livro
     livros[livroEditando] = {
         ...livros[livroEditando], 
         nome: document.getElementById("editNome").value,
@@ -118,7 +116,7 @@ const salvarEdicao = () => {
     carregarLivros();
 };
 
-// Carrega alunos no modal de reserva
+//Carrega alunos no modal de reservar
 function carregarAlunosParaReserva(index) {
     EL.listaAlunos.innerHTML = "";
     livroReservando = index;
@@ -129,7 +127,7 @@ function carregarAlunosParaReserva(index) {
 
     document.querySelector('#reserveModal h2').textContent = `Reservar: ${livro.nome}`;
 
-    // Opção 1: Livro já reservado
+    //Opção 1: Livro já reservado
     if (livro.reservadoPor) {
         document.querySelector('#reserveModal p').textContent = "O livro está reservado. Deseja liberar?";
         
@@ -141,12 +139,12 @@ function carregarAlunosParaReserva(index) {
             ${dataDev}
             <button id="liberarLivroBtn">Cancelar Reserva</button>
         `;
-        // Adiciona evento para liberar
+        //Adiciona evento para liberar
         document.getElementById("liberarLivroBtn").addEventListener("click", () => liberarLivro(index, livro.reservadoPor));
         return;
     }
     
-    // Opção 2: Livro livre
+    //Opção 2: Livro livre
     document.querySelector('#reserveModal p').innerHTML = `
         Selecione um aluno e a data de devolução:<br><br>
         <label for="devolucao-date">Data de Devolução:</label>
@@ -158,7 +156,7 @@ function carregarAlunosParaReserva(index) {
         return;
     }
 
-    // Lista os alunos
+    //Lista os alunos para reservar o livro
     alunos.forEach(aluno => {
         const alunoJaReservou = livros.some(l => l.reservadoPor === aluno.nome);
         
@@ -177,7 +175,7 @@ function carregarAlunosParaReserva(index) {
     });
 }
 
-// Reserva o livro
+//Reserva o livro
 const reservarLivro = (index, nomeAluno) => {
     const livros = pegarDados(CHAVES.LIVROS);
     const livro = livros[index];
@@ -204,7 +202,7 @@ const reservarLivro = (index, nomeAluno) => {
     }
 };
 
-// Libera o livro
+//Libera o livro reservado
 const liberarLivro = (index, nomeAluno) => {
     const livros = pegarDados(CHAVES.LIVROS);
     const livro = livros[index];
@@ -219,17 +217,15 @@ const liberarLivro = (index, nomeAluno) => {
     }
 };
 
-// --- Configuração de Eventos ---
-
-// Ouve cliques nos botões de ação (remover, editar, reservar)
+//Ouve cliques nos botões de ação (remover, editar, reservar)
 EL.listaLivros.addEventListener("click", (e) => {
     const btn = e.target.closest(".action-btn");
-    if (!btn) return; // Se não for botão, ignora
+    if (!btn) return; //Se não for botão, ignora
 
     const { action, index } = btn.dataset;
     const idx = parseInt(index);
 
-    // Decide qual função chamar
+    //Decide qual função chamar pelo switch cASE
     switch (action) {
         case "remove":
             removerLivro(idx);
@@ -244,28 +240,28 @@ EL.listaLivros.addEventListener("click", (e) => {
     }
 });
 
-// Eventos dos botões dos modais
+//Eventos dos botões dos modais
 document.getElementById("cancelarEdicao").addEventListener("click", () => EL.modalEditar.style.display = "none");
 document.getElementById("salvarEdicao").addEventListener("click", salvarEdicao);
 document.getElementById("cancelarReserva").addEventListener("click", () => EL.modalReservar.style.display = "none");
 
-// Fecha modais se clicar fora
+//Fecha modais se clicar fora
 window.addEventListener("click", e => {
     if (e.target === EL.modalEditar) EL.modalEditar.style.display = "none";
     if (e.target === EL.modalReservar) EL.modalReservar.style.display = "none";
 });
 
-// Pesquisa instantânea
+//Pesquisa instantânea
 EL.search.addEventListener("input", function () {
     const texto = this.value.toLowerCase();
     const livros = EL.listaLivros.querySelectorAll(".book");
 
     livros.forEach(livro => {
         const info = livro.innerText.toLowerCase();
-        // Se a busca der match, mostra. Se não, esconde.
+        //Se a busca der certo, mostra. Se não, esconde.
         livro.style.display = info.includes(texto) ? "block" : "none";
     });
 });
 
-// Começa carregando a lista
+//Começa carregando a lista
 carregarLivros();
