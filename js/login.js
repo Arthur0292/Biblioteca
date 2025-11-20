@@ -1,21 +1,21 @@
-// Pega elementos do formulário pelo ID
+//Pega elementos do formulário pelo ID la no html
 const loginForm = document.getElementById('loginForm');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const emailError = document.getElementById('emailError');
 const passwordError = document.getElementById('passwordError');
 
-// Função de validação ao enviar o formulário
+//Função de validação ao enviar o formulário
 loginForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  // Limpa mensagens de erro
+  //Limpa mensagens de erro
   emailError.textContent = "";
   passwordError.textContent = "";
 
   let valid = true;
 
-  // Validação de email vazio ou formato incorreto
+  //Validação de email vazio ou formato incorreto
   if (emailInput.value.trim() === "") {
     emailError.textContent = "Por favor, insira seu email.";
     valid = false;
@@ -24,13 +24,13 @@ loginForm.addEventListener('submit', function (event) {
     valid = false;
   }
 
-  // Validação de senha vazia
+  //Validação de senha vazia
   if (passwordInput.value.trim() === "") {
     passwordError.textContent = "Por favor, insira sua senha.";
     valid = false;
   }
 
-  // Se tudo estiver válido, checa credenciais fixas
+  //Se tudo estiver válido, checa credenciais fixas
   if (valid) {
     const email = emailInput.value.trim();
     const senha = passwordInput.value.trim();
@@ -44,4 +44,5 @@ loginForm.addEventListener('submit', function (event) {
       passwordError.textContent = "Email ou senha incorretos.";
     }
   }
+
 });
