@@ -1,4 +1,4 @@
-//Pega elementos do formulário pelo ID la no html
+//Pega elementos do formulário pelo ID
 const loginForm = document.getElementById('loginForm');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
@@ -34,10 +34,6 @@ loginForm.addEventListener('submit', function (event) {
   if (valid) {
     const email = emailInput.value.trim();
     const senha = passwordInput.value.trim();
-  // Se tudo estiver válido, checa credenciais fixas
-  if (valid) {
-    const email = emailInput.value.trim();
-    const senha = passwordInput.value.trim();
 
       //Se email e senha estiver corretos:
     if (email === "admin@cemi.com" && senha === "12345678") {
@@ -49,5 +45,3 @@ loginForm.addEventListener('submit', function (event) {
     }
   }
 });
-
-
