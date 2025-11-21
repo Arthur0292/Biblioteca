@@ -1,0 +1,90 @@
+/*Estilo do corpo do site*/
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+}
+
+/*Estilo do cabeçalho do site*/
+.topo {
+    background-color: #315F9A;
+    color: white;
+    padding: 15px;
+}
+
+.topo ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.topo ul li {
+    display: inline;
+}
+
+.topo ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*Estilo do conatiner do cadastro*/
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin: 60px auto;
+    max-width: 900px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/*Estilo da imagem do livro*/
+.livro-img img {
+    max-width: 250px;
+    border-radius: 10px;
+}
+
+/*Estilo do formulario*/
+.form {
+    flex: 1;
+}
+
+.form h2 {
+    margin-bottom: 20px;
+    color: #315F9A;
+}
+
+.form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.form input, 
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form button {
+    margin-top: 15px;
+    background: #315F9A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form button:hover {
+    background: #24466d;
+}

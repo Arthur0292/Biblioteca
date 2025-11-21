@@ -1,0 +1,248 @@
+/*Estilo do corpo do site*/
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background: white;
+}
+
+/*Estilo do cabeçalho do site*/
+.topo {
+    background-color: #315F9A;
+    color: white;
+    padding: 9;
+    position: relative;
+    bottom: 18px;
+}
+
+.topo ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.topo ul li {
+    display: inline;
+}
+
+.topo ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/*Barra de pesquisa*/
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0 20px 0;
+}
+
+.search-container input {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #5676a0;
+  font-size: 16px;
+}
+
+/*Lista de livros*/
+.book-carousel {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.book {
+  position: relative;
+  width: 200px;
+  background: #315F9A;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.book p {
+  margin-top: 10px;
+}
+
+/*Botões (Remover e Editar)*/
+/*Estilo do botão de remover os livros*/
+.remove-btn {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  cursor: pointer;
+  font-size: 5px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  background: rgb(182, 182, 182);
+  border-radius: 5px;
+}
+
+.remove-btn:hover {
+  background: darkred;
+  color: white;
+}
+/*Estilo do botão de editar os livros*/
+.edit-btn {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  cursor: pointer;
+  font-size: 5px;
+  color: #315F9A;
+  background: rgb(182, 182, 182);
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.edit-btn:hover {
+  background: #24466d;
+  color: white;
+}
+
+/* Estilo do botão de Reservar o livro*/
+.reserve-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  cursor: pointer;
+  font-size: 23px;
+  color: white;
+  background: #315F9A;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 25px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s;
+}
+
+.reserve-btn:hover {
+  background: #24466d;
+}
+
+
+/*Modal*/
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  /* Fundo escurecido */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: rgb(255, 255, 255);
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para o conteúdo do modal de reserva */
+.reserve-content {
+  width: 300px;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #315F9A;
+  margin-bottom: 16px;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  margin-top: 1px;
+  margin-bottom: 15px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.modal-buttons button {
+  background: #315F9A;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-buttons button:hover {
+  background: #24466d;
+}
+
+/*Lista dos alunos */
+#studentListContainer {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.student-item {
+  padding: 8px;
+  margin-bottom: 4px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: #333;
+  font-size: 14px;
+}
+
+.student-item:hover {
+  background-color: #ddd;
+}
+
+/* Botão de Cancelar*/
+.cancel-reservation-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.cancel-reservation-btn:hover {
+  background: #a7281a;
+}
