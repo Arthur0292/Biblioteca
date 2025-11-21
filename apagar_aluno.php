@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-
+//Conexão com o BD
 $servername = "sql308.infinityfree.com";
 $username = "if0_40474741";
 $password = "8fJzevkLl5EJlQw";
@@ -39,4 +39,5 @@ if ($stmt->execute()) {
 
 $stmt->close();
 $conn->close();
+
 ?>
