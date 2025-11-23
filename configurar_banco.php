@@ -10,11 +10,11 @@ $conn = new mysqli($servername, $username, $password);
 if ($conn->connect_error) {
     die("❌ Conexão com o servidor falhou: " . $conn->connect_error);
 }
-
+//Criação do BD caso nao exista
 $sql_create_db = "CREATE DATABASE IF NOT EXISTS $dbname";
 if ($conn->query($sql_create_db) === TRUE) {
     echo "✅ Banco de dados **$dbname** criado ou já existente.<br>";
-} else {
+} else { //Se não conseguir exibe mensagem de erro
     echo "❌ Erro ao criar banco: " . $conn->error . "<br>";
     $conn->close();
     exit();
@@ -83,7 +83,7 @@ $sql_alter_table = "
 
 //Executa os comandos ALTER TABLE
 if ($conn->multi_query($sql_alter_table)) {
-    // Limpa os resultados do multi_query
+    //Limpa os resultados do multi_query
     do {
         if ($result = $conn->store_result()) {
             $result->free();
@@ -101,4 +101,5 @@ if ($conn->multi_query($sql_alter_table)) {
 
 
 $conn->close();
+
 ?>
